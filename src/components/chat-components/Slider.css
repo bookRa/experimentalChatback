@@ -1,0 +1,67 @@
+.markerContainer {
+  display: flex;
+  margin: auto;
+  width: 100%;
+}
+
+.space {
+  flex-grow: 1;
+  width: 99%;
+}
+
+.slider-left, .slider-right {
+  font-size: 20px;
+  text-align: center;
+}
+
+.moodRange {
+  background: #fff;
+  border: 2px solid #87B998;
+  border-radius: 15px;
+  height: 20px;
+  width: 100%;
+  transition: opacity .2s;
+  -webkit-appearance: none;
+  -webkit-transition: .2s;
+}
+
+.moodRange:hover {
+  opacity: 1;
+}
+
+.moodRange::-moz-range-thumb {
+  background: #87B998;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: -3px 0px 6px -2px gray;
+  cursor: pointer;
+  height: 30px;
+  margin-bottom: 100px;
+  width: 30px;
+}
+
+.moodRange::-webkit-slider-thumb {
+  appearance: none;
+  background: #87B998;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: -3px 0px 6px -2px gray;
+  cursor: pointer;
+  height: 30px;
+  -webkit-appearance: none;
+  width: 30px;
+}
+
+.slidecontainer {
+  margin: auto;
+  margin-top: 20vh;
+  width: 90%;
+}
+
+#moodHelper {
+  background-color: #fff;
+  color: #51B587;
+  font-size: x-large;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}

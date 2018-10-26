@@ -1,0 +1,110 @@
+.navBar {
+  background-color: #264D4D;
+  align-items: center;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkList li {
+  display: inline-block;
+}
+
+#signedIn {
+  font-style: italic;
+  color: #28A745;
+  word-wrap: break-word;
+  max-width: 10rem;
+}
+
+#signedIn:hover {
+  text-decoration: none;
+}
+
+#signOut:hover {
+  cursor: pointer;
+}
+
+a:active, a:visited {
+  color: purple;
+}
+
+a:hover {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.big-title {
+  color: #fff;
+  margin: 0;
+}
+
+.logo {
+  height: 70px;
+}
+
+.leftSection {
+  width: 40%;
+  height: 72px;
+}
+.rightSection {
+  width: 40%;
+}
+
+.linkList {
+  padding: 0;
+  float: right;
+}
+
+.menu-item {
+  display: block;
+  padding: 12px 16px;
+  color: #0275d8;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hamburger {
+  cursor: pointer;
+  font-size: 34px;
+  padding: 14px;
+}
+
+.hamburger:focus {
+  color: #86FFC8;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 72px;
+  right: 0;
+  color: #0275d8;
+}
+
+.dropdown, .hamburger {
+  float: right;
+}
+
+.show {display: block;}
+
+a.menu-item {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+.menu-item:hover {
+  background-color: #EAFFFA;
+  text-decoration: underline;
+}
+
+.divider {
+  height: 1px;
+  background-color: lightgray;
+}

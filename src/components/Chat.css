@@ -1,0 +1,94 @@
+.chat {
+	height: calc(100% - 72px);
+}
+
+.chat > * {
+	background-color: #51B587;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	width: 100%;
+}
+
+#chatText {
+	border-radius: 0;
+  	font-size: 20px;
+  	height: 60px;
+}
+
+#chatWindow {
+	flex: 1;
+	display: flex;
+	padding-top: 12px;
+	overflow-y: scroll;
+	flex-direction: column-reverse;
+}
+
+.stageHandler {
+	border: none;
+	border-radius: 0;
+	font-size: x-large;
+	padding-top: 30px;
+	padding-bottom: 22px;
+	cursor: pointer;
+}
+
+.mainWindow {
+	flex-direction: column;
+	flex-shrink: 0;
+	background: linear-gradient(#F5FFFD, #ECFFF3, #E4FFF8, #D7F7F3);
+	display: flex;
+	color: #51B587;
+  	height: 100%;
+}
+
+.navbar {
+	background-color: #264D4D;
+	font-weight: bold;
+	padding-top: 21px;
+    padding-bottom: 16px;
+    font-size: 30px;
+}
+
+.prompt {
+	display: inline-block;
+}
+
+.hidden {
+	display: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+textarea {
+	font-family: inherit;
+	padding: 6px 12px;
+}
+
+.message {
+  align-self: flex-end;
+  background-color: #96D08E;
+  border-radius: 12px 12px 0 12px;
+  color: #fff;
+  font-size: 16px;
+  margin: 0 8px 12px 8px;
+  max-width: 70%;
+  padding: 8px 16px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.partnerMessage {
+	align-self: flex-start;
+	background-color: #fff;
+	border-radius: 12px 12px 12px 0;
+	color: black;
+	font-size: 16px;
+	margin: 0 8px 12px 8px;
+	max-width: 70%;
+	padding: 8px 16px;
+	text-align: left;
+	word-wrap: break-word;
+}

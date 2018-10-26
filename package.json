@@ -1,0 +1,37 @@
+{
+  "name": "new-chatback",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-regular-svg-icons": "^5.1.0-11",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
+    "axios": "^0.18.0",
+    "firebase": "^5.5.5",
+    "modclean": "^3.0.0-beta.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lockheedmartian/chatbackReact.git"
+  },
+  "author": "omar-and-kyler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lockheedmartian/chatbackReact/issues"
+  },
+  "homepage": "https://newchatback.firebaseapp.com",
+  "devDependencies": {}
+}

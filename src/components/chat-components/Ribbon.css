@@ -1,0 +1,59 @@
+.ribbon {
+	background-color: #51B587;
+	height: 48px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 6px;
+	text-align: left;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.ribbonButton {
+  background-color: #fff;
+  color: #555555;
+  font-size: 16px;
+  margin: 3px;
+}
+
+.btn {
+	display: inline-block;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 6px 12px;
+	line-height: 1.428571429;
+	border-radius: 4px;
+	user-select: none;
+}
+
+.tooltiptext {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 12px;
+    position: absolute;
+    z-index: 1;
+    width: 150px;
+    bottom: 32%;
+    margin-left: -130px;
+    transition: opacity 0.3s;
+    white-space: normal;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}

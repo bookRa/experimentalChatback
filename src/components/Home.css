@@ -1,0 +1,32 @@
+.activeUserList {
+  margin: auto;
+  margin-bottom: 30px;
+  width: 60%;
+  border-radius: 20px;
+  padding: 8px 20px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  margin-top: 30px;
+}
+
+.activeUserList > ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.activeUserList > ul > li {
+	margin: auto;
+}
+
+#enterChatBtn {
+  background-color: #264D4D;
+  border: transparent;
+  border-radius: 20px;
+  box-shadow: 0 2px 7px 0 #8D8A84;
+  color: #fff;
+  padding-left: 45px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 45px;
+  font-size: 16px;
+  min-width: 200px;
+}

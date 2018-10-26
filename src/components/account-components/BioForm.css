@@ -1,0 +1,9 @@
+fieldset {
+  display: inline-block;
+  width: inherit;
+  margin: auto;
+  margin-bottom: 30px;
+}
+label {
+  position: initial;
+}
