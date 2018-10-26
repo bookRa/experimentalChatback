@@ -5,22 +5,6 @@ const axios = require("axios");
 // const FIREBASE_URL = "https://us-central1-newchatback.cloudfunctions.net"
 const FIREBASE_URL = "http://localhost:5001/newchatback/us-central1"
 
-
-// An asynch method to get ConvoID
-// export const getConvoId = userName => {
-//   console.log("requesting convo...");
-//   return axios.post("https://chatbackfullstacktest.herokuapp.com/match", {
-//     self: userName,
-//     partner: null,
-//     conversation: null
-//   });
-//   // return new Promise((resolve, reject) => {
-//   //   setTimeout(() => {
-//   //     resolve(10);
-//   //   }, 1000);
-//   // });
-// };
-
 /*
   Should return the following JSON:
   {

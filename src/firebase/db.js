@@ -81,3 +81,8 @@ export const waitForMatch = (cb)=>{
 export const unsubscribeMatches = ()=>{
   return matchRef.off("value")
 }
+export const noMoreMatches = ()=>{
+  return matchRef.update({
+    u1: null
+  })
+}

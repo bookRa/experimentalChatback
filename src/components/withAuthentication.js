@@ -20,7 +20,9 @@ const withAuthentication = Component => {
     }
     handleLogout() {
       if (this.state.authUser) {
-        db.removeUserOnLogout(this.state.authUser.uid);
+        db.removeUserOnLogout(this.state.authUser.uid); //remove from active users
+        db.noMoreMatches()
+        db.unsubscribeMatches()
         this.setState({ authUser: null });
       }
     }

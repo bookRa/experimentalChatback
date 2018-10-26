@@ -14,49 +14,69 @@ const matchRequests = admin.database().ref('/matchRequests')
 
 
 exports.getMatch = functions.https.onRequest((req, res) => {
-    // replace this with uid to permit same userNames
+    // TODO: replace this with uid to permit same userNames
     let name = req.query.userName;
-    return cors(req, res, ()=>{
+    return cors(req, res, () => {
         matchRequests.once('value')
-        .then(snapshot => {
-            if (snapshot.hasChildren() && snapshot.val().u1 !== name) {
-                console.log("Yes User in Queue")
-                matchRequests.update({
-                    u2: name
-                }).then(()=>{
-                    console.log("About to delete!")
-                    matchRequests.remove()
-                    returnObj = snapshot.val()
-                    returnObj.paired = true;
-                    res.send(returnObj)
-                    // console.log(snapshot.val())
-                    // console.log("matchRequests")
-                    return null
-                })
-                .catch(err=> console.log(err))
-    
-            }
-            else if(!snapshot.val() || snapshot.val().u1 !== name){
-                console.log("No Users in Queue")
-                let newConvo = databaseConvos.push()
-                matchRequests.set({
-                    conversation: newConvo.key,
-                    u1: name,
-                }).then(() => {
-                    console.log("Match Request Added")
-                    returnObj = {
-                        paired: false,
-                        conversation: newConvo.key
+            .then(snapshot => {
+                if (snapshot.hasChildren()) { //that means somone's been here before (u1 could be null)
+                let u1 = snapshot.val().u1;
+                    if (u1) { //u1 exists
+                        console.log("Yes User in Queue")
+                        matchRequests.update({
+                            u2: name
+                        }).then(() => {
+                            console.log("About to delete!")
+                            matchRequests.remove()
+                            returnObj = snapshot.val()
+                            returnObj.paired = true;
+                            res.send(returnObj)
+                            // console.log(snapshot.val())
+                            // console.log("matchRequests")
+                            return null
+                        })
+                            .catch(err => console.log("Error removing successful match:", err))
+                    } else { //u1 is null (i.e prev user has unsubscribed)
+                        matchRequests.update({
+                            u1: name
+                        }).then(() => {
+                            // let timeOut = 10 //Set the timeout here? Not now
+                            console.log("Match Request updated from unsubbed U1")
+                            returnObj = snapshot.val()
+                            returnObj.u1 = name
+                            returnObj.paired = false
+                            res.send(returnObj)
+                            return null
+                        }
+                        )
+                            .catch(e => console.log("Error updating with unsubbed u1:", e))
+
                     }
-                    res.send(returnObj)
-                    return null
+
                 }
-                )
-                .catch(e=> console.log(e))
-            }
-            return null
-        })
-        .catch(err=> console.log(err))
+                else { // if (!snapshot.val() || snapshot.val().u1 !== name)
+                    console.log("No Users in Queue")
+                    let newConvo = databaseConvos.push()
+                    matchRequests.set({
+                        conversation: newConvo.key,
+                        u1: name,
+                    }).then(() => {
+                        let timeOut = 10
+                        console.log("Match Request Added")
+                        returnObj = {
+                            paired: false,
+                            conversation: newConvo.key,
+                            timeOut: timeOut
+                        }
+                        res.send(returnObj)
+                        return null
+                    }
+                    )
+                        .catch(e => console.log("Error Setting fresh node:", e))
+                }
+                return null
+            })
+            .catch(err => console.log("Wasn't able to get the Match Node:", err))
 
     })
 }

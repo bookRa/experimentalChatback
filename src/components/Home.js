@@ -100,6 +100,32 @@ class NewConvo extends React.Component {
       gotId: false,
       userName: props.userName
     };
+    this.handleTimeout = this.handleTimeout.bind(this)
+  }
+
+  handleTimeout() {
+    db.unsubscribeMatches()
+    db.noMoreMatches()
+    .then(
+      this.setState({
+        gotId: "timedOut"
+      })
+    )
+  }
+
+  subscribeMatch(){
+    console.log("Subscribing to match")
+    db.waitForMatch((snap) => {
+      let currQueue = snap.val()
+      console.log("THE NEW USER:", currQueue)
+      if (currQueue && currQueue.u2) {
+        db.unsubscribeMatches()
+        this.setState({
+          gotId: currQueue.conversation,
+          partner: currQueue.u2
+        });
+      }
+    })
   }
 
   goToConvo = () => {
@@ -119,19 +145,7 @@ class NewConvo extends React.Component {
         } else {
           console.log("No match yet BABY")
           console.log(res.data)
-          db.waitForMatch((snap) => {
-            let currQueue = snap.val()
-            console.log("THE NEW USER:", currQueue)
-            if (currQueue && currQueue.u2) {
-              db.unsubscribeMatches()
-              this.setState({
-                gotId: currQueue.conversation,
-                partner: currQueue.u2
-              });
-            }
-
-            // console.log("THE PREV DATA", prevKey)
-          })
+          this.subscribeMatch()
         }
         // console.log("got response:");
         // console.log(res.data);
@@ -146,8 +160,21 @@ class NewConvo extends React.Component {
   /* STILL NEEDED: ERROR MESSAGES: What to do on time out, server error, improper auth? etc... */
   render() {
     if (this.state.gotId === "fetching") {
-      return <p> Working on Matching...</p>;
-    } else if (this.state.gotId) {
+      return <div>
+        <p> Working on Matching...</p>
+        <CountDown timer={5} timeOutFunc={this.handleTimeout} />
+      </div>
+    } else if (this.state.gotId === "timedOut") {
+      return (
+        <div>
+          <p>Doesn't seem like there's anyone here at the moment</p>
+          <button id="startConvo" className="general-button" onClick={this.goToConvo}>
+            Try Again?
+        </button>
+        </div>
+      )
+    }
+    else if (this.state.gotId) {
       return (
         <Redirect
           to={{
@@ -168,42 +195,51 @@ class NewConvo extends React.Component {
   }
 }
 
-// class SpecificConvo extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       convoId: undefined
-//     };
-//   }
+class CountDown extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isMounted_: false,
+      time: props.timer
+    }
+  }
+  componentDidMount() {
+    this.setState({ isMounted_: true })
+    // console.log("HELLO WORLD", this.state.time)
+    let timeShow = setInterval(() => {
+      if (this.state.isMounted_) {
+        console.log("We're working")
+        this.setState({
+          time: this.state.time - 1
+        })
+        if (this.state.time === 0) {
+          clearInterval(timeShow)
+          this.props.timeOutFunc()
+        }
+      } else {
+        console.log("timer clear!");
+        clearInterval(timeShow)
+      }
+    }, 1000)
+    this.setState({timeShow: timeShow})
 
-//   render() {
-//     return (
-//       <div>
-//         <h4>Or enter a specific chat ID</h4>
-//         <input
-//           type="text"
-//           placeholder="enter convoID"
-//           onChange={e => this.setState({ convoId: e.target.value })}
-//         />
-//         {/* <button id="enterSpecificChat"> */}
-//         <Link
-//           id="enterSpecificChatInner"
-//           className="signBtn"
-//           to={{
-//             pathname: routes.CHAT,
-//             state: { convoId: this.state.convoId }
-//           }}
-//         >
-//           Enter Chat
-//         </Link>
-//         {/* </button> */}
-//       </div>
-//     );
-//   }
-// }
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.timeShow)
+    this.setState({ isMounted_: false })
+  }
+
+  render() {
+    return <p>{this.state.time}</p>
+  }
+}
+
 
 const authCondition = authUser => !!authUser;
 
 export default withAuthorization(authCondition)(HomePage);
 /* (authCondition) */
-//TODO: Username is not getting picked up directly after a new user is created.  A refresh is needed for username to display in Active Users and the "signed in as ..." note. Can probably fix by explicitly setting the authstate.user.displayname.
+/*TODO: Username is not getting picked up directly after a new user is created.
+  A refresh is needed for username to display in Active Users and the "signed in as ..." 
+  note. Can probably fix by explicitly setting the authstate.user.displayname.
+*/

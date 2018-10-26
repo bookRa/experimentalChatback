@@ -1,0 +1,37 @@
+[debug] [2018-10-26T18:58:38.226Z] ----------------------------------------------------------------------
+[debug] [2018-10-26T18:58:38.228Z] Command:       /home/omar/.nvm/versions/node/v10.11.0/bin/node /home/omar/.nvm/versions/node/v10.11.0/bin/firebase serve
+[debug] [2018-10-26T18:58:38.228Z] CLI Version:   4.2.1
+[debug] [2018-10-26T18:58:38.228Z] Platform:      linux
+[debug] [2018-10-26T18:58:38.228Z] Node Version:  v10.11.0
+[debug] [2018-10-26T18:58:38.289Z] Time:          Fri Oct 26 2018 11:58:38 GMT-0700 (Pacific Daylight Time)
+[debug] [2018-10-26T18:58:38.289Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-26T18:58:38.303Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-26T18:58:38.303Z] > authorizing via signed-in user
+[debug] [2018-10-26T18:58:38.306Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-10-26T18:58:38.306Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-10-26T18:58:38.554Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-26T18:58:38.629Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/newchatback  
+ 
+[debug] [2018-10-26T18:58:39.393Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-26T18:58:39.394Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/newchatback  
+ 
+[debug] [2018-10-26T18:58:39.582Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/omar/chatbackEXPERIMENT'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-10-26T18:58:53.809Z] Fetching environment
+[debug] [2018-10-26T18:58:53.814Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/644962688436:getServerAppConfig  
+ 
+[debug] [2018-10-26T18:58:53.814Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/644962688436/clients/_:getWebAppConfig  
+ 
+[debug] [2018-10-26T18:58:53.955Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-26T18:58:53.955Z] Starting @google-cloud/functions-emulator
+[debug] [2018-10-26T18:58:54.263Z] <<< HTTP RESPONSE 200
+[info] i  hosting[newchatback]: Serving hosting files from: build
+[info] ✔  hosting[newchatback]: Local server: http://localhost:5000
+[debug] [2018-10-26T18:59:02.327Z] Parsing function triggers
+[info] ✔  functions: getMatch: http://localhost:5001/newchatback/us-central1/getMatch
+[info] ✔  functions: helloWorld: http://localhost:5001/newchatback/us-central1/helloWorld
