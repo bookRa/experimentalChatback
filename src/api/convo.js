@@ -2,8 +2,8 @@ import { functions } from "firebase";
 
 const axios = require("axios");
 
-// const FIREBASE_URL = "https://us-central1-newchatback.cloudfunctions.net"
-const FIREBASE_URL = "http://localhost:5001/newchatback/us-central1"
+const FIREBASE_URL = "https://us-central1-newchatback.cloudfunctions.net"
+// const FIREBASE_URL = "http://localhost:5001/newchatback/us-central1"
 
 /*
   Should return the following JSON:

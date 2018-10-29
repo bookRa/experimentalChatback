@@ -126,6 +126,7 @@ class NewConvo extends React.Component {
         });
       }
     })
+    db.removeFromConvoSubOnDisconnect()
   }
 
   goToConvo = () => {

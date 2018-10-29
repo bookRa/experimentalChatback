@@ -18,6 +18,7 @@ const withAuthentication = Component => {
       });
       db.removeFromActiveUsersOnDisconnect({ uid: user.uid });
     }
+    
     handleLogout() {
       if (this.state.authUser) {
         db.removeUserOnLogout(this.state.authUser.uid); //remove from active users

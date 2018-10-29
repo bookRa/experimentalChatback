@@ -61,7 +61,7 @@ export const postMsg = (convoId, msgObject) => {
     // }
     () => {
       profileRef
-        .child(msgObject.id + "/chatHistory/" + pushMsgRef.key)
+        .child(msgObject.sender + "/chatHistory/" + pushMsgRef.key)
         .set("true");
     }
   );
@@ -79,10 +79,24 @@ export const waitForMatch = (cb)=>{
 }
 
 export const unsubscribeMatches = ()=>{
+  matchRef
+  .onDisconnect()
+  .cancel()
   return matchRef.off("value")
 }
 export const noMoreMatches = ()=>{
+  matchRef
+  .onDisconnect()
+  .cancel()
   return matchRef.update({
     u1: null
+  })
+}
+
+export const removeFromConvoSubOnDisconnect = () =>{
+  return matchRef
+  .onDisconnect()
+  .update({
+    u1:null
   })
 }
