@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { auth } from "../firebase";
 import { SignInLink } from "./SignIn";
+import { db } from "../firebase";
 import { users } from "../api";
 import "./App.css";
 import FormField from "./FormField";
@@ -60,7 +61,9 @@ class SignUpForm extends Component {
           .doUpdateProfile({
             displayName: username
           })
-          .then(() => console.log("profile updated with: " + username))
+          .then(() =>{ 
+            db.addToActiveUsers({uid: tempUID, userName: username})
+            console.log("profile updated with: " + username)})
           .catch(e => console.log("problem with username: " + e));
         this.setState(() => ({ ...INITIAL_STATE }));
         history.push(routes.HOME);
